@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Faizan Ahmed — AI Engineer | AI Agents, RAG & Automation</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+  :root{
+    --bg:#f7f8fc;
+    --bg-panel:#ffffff;
+    --bg-panel-alt:#f2f3fa;
+    --bg-raised:#ffffff;
+    --line:#e2e4f0;
+    --line-soft:#eceefa;
+    --text:#13141f;
+    --text-dim:#5b5e75;
+    --text-faint:#9296ab;
+
+    --indigo:#4f39f6;
+    --indigo-soft:#eeebfe;
+    --mint:#00c896;
+    --coral:#ff6a45;
+
+    --radius:16px;
+    --radius-sm:9px;
+
+    --font-display:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    font-family:var(--font-body);
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.65;
+
+    background-image:
+      radial-gradient(
+        ellipse 1100px 620px at 10% -6%,
+        rgba(79,57,246,0.14),
+        transparent 62%
+      ),
+      radial-gradient(
+        ellipse 900px 620px at 94% 8%,
+        rgba(0,200,150,0.13),
+        transparent 62%
+      ),
+      radial-gradient(
+        ellipse 900px 700px at 50% 115%,
+        rgba(255,106,69,0.08),
+        transparent 60%
+      );
+    background-attachment:fixed;
+  }
+
+  a{
+    text-decoration:none;
+    color:inherit;
+  }
+
+  img{
+    max-width:100%;
+    display:block;
+  }
+
+  ::selection{
+    background:var(--indigo);
+    color:#ffffff;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{
+      animation-duration:0.01ms !important;
+      transition-duration:0.01ms !important;
+    }
+  }
+
+  /* ---------- Toolbar ---------- */
+
+  .toolbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 24px;
+    height:64px;
+
+    background:rgba(247,248,252,0.78);
+    backdrop-filter:blur(14px) saturate(150%);
+
+    border-bottom:1px solid var(--line);
+  }
+
+  .toolbar-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+
+  .toolbar-logo{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:16.5px;
+    letter-spacing:-0.01em;
+    color:var(--text);
+  }
+
+  .toolbar-role{
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:11.5px;
+    letter-spacing:0.01em;
+
+    color:var(--indigo);
+    background:linear-gradient(120deg, var(--indigo-soft), #e6faf3);
+
+    border:1px solid rgba(79,57,246,0.22);
+    border-radius:100px;
+
+    padding:4px 11px;
+  }
+
+  .toolbar-menu{
+    display:flex;
+    gap:30px;
+  }
+
+  .toolbar-menu a{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:13.5px;
+    color:var(--text-dim);
+
+    position:relative;
+    padding:4px 2px;
+
+    transition:color .2s;
+  }
+
+  .toolbar-menu a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-2px;
+
+    width:0;
+    height:2px;
+    border-radius:2px;
+
+    background:var(--indigo);
+
+    transition:width .25s;
+  }
+
+  .toolbar-menu a:hover{
+    color:var(--text);
+  }
+
+  .toolbar-menu a:hover::after{
+    width:100%;
+  }
+
+  .toolbar-status{
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    font-family:var(--font-body);
+    font-weight:600;
+    font-size:12.5px;
+
+    color:var(--text);
+
+    background:#e6faf3;
+    border:1px solid rgba(0,200,150,0.35);
+    border-radius:100px;
+    padding:7px 14px 7px 11px;
+  }
+
+  .dot-live{
+    position:relative;
+
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    background:var(--mint);
+    box-shadow:0 0 10px 1px rgba(0,200,150,0.7);
+
+    flex-shrink:0;
+  }
+
+  .dot-live::before{
+    content:"";
+    position:absolute;
+    inset:-6px;
+
+    border-radius:50%;
+    border:2px solid rgba(0,200,150,0.5);
+
+    animation:pulse-ring 1.8s cubic-bezier(0.2,0.6,0.4,1) infinite;
+  }
+
+  @keyframes pulse-ring{
+
+    0%{
+      transform:scale(0.4);
+      opacity:1;
+    }
+
+    80%{
+      transform:scale(1.9);
+      opacity:0;
+    }
+
+    100%{
+      transform:scale(1.9);
+      opacity:0;
+    }
+
+  }
+
+  @media (max-width:760px){
+
+    .toolbar-menu{
+      display:none;
+    }
+
+  }
+
+  @media (max-width:560px){
+
+    .toolbar-status span{
+      display:none;
+    }
+
+  }
+
+  /* ---------- Layout ---------- */
+
+  section{
+    padding:88px 24px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+
+  .section-head{
+    margin-bottom:40px;
+  }
+
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:0.12em;
+
+    color:var(--indigo);
+
+    text-transform:uppercase;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    margin-bottom:12px;
+  }
+
+  .eyebrow::before{
+    content:"";
+    width:16px;
+    height:1.5px;
+    background:var(--indigo);
+  }
+
+  h2{
+    font-family:var(--font-display);
+    font-size:30px;
+    font-weight:700;
+    letter-spacing:-0.02em;
+    color:var(--text);
+  }
+
+  /* ---------- Hero ---------- */
+
+  #hero{
+    padding:0;
+    max-width:100%;
+  }
+
+  .viewport{
+    position:relative;
+    overflow:hidden;
+
+    padding:96px 24px 80px;
+
+    background:
+      radial-gradient(
+        ellipse 780px 420px at 18% 0%,
+        rgba(79,57,246,0.10),
+        transparent 65%
+      ),
+      radial-gradient(
+        ellipse 620px 420px at 88% 12%,
+        rgba(0,200,150,0.09),
+        transparent 65%
+      ),
+      var(--bg);
+  }
+
+  .viewport::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background-image:
+      linear-gradient(rgba(79,57,246,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,57,246,0.06) 1px, transparent 1px);
+    background-size:64px 64px;
+
+    mask-image:radial-gradient(ellipse 700px 420px at 30% 10%, #000 0%, transparent 75%);
+    -webkit-mask-image:radial-gradient(ellipse 700px 420px at 30% 10%, #000 0%, transparent 75%);
+
+    pointer-events:none;
+  }
+
+  .viewport-inner{
+    max-width:1120px;
+    margin:0 auto;
+    position:relative;
+  }
+
+  .hero h1{
+    font-family:var(--font-display);
+    font-weight:500;
+    color:var(--text-dim);
+
+    font-size:clamp(21px, 2.6vw, 27px);
+
+    line-height:1.5;
+    letter-spacing:-0.005em;
+
+    max-width:700px;
+
+    margin-bottom:24px;
+  }
+
+  .hero h1 .name{
+    font-weight:700;
+    font-size:1.55em;
+    letter-spacing:-0.015em;
+
+    background:linear-gradient(100deg, var(--indigo) 10%, var(--mint) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+
+  .hero h1 .accent-underline{
+    position:relative;
+    font-weight:700;
+    color:var(--text);
+  }
+
+  .hero h1 .accent-underline::after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:1px;
+
+    height:8px;
+    border-radius:2px;
+
+    background:linear-gradient(90deg, rgba(0,200,150,0.35), rgba(79,57,246,0.3));
+    z-index:-1;
+  }
+
+  .hero-desc{
+    max-width:720px;
+
+    color:var(--text-dim);
+
+    font-size:16.5px;
+
+    margin-bottom:32px;
+  }
+
+  .hero-desc b{
+    color:var(--text);
+    font-weight:600;
+  }
+
+  .hero-skills{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+
+    gap:8px;
+
+    margin-bottom:36px;
+
+    max-width:850px;
+  }
+
+  .hero-skills span{
+    font-family:var(--font-body);
+    font-weight:500;
+    font-size:13px;
+
+    color:var(--text-dim);
+
+    background:var(--bg-panel);
+
+    border:1px solid var(--line);
+
+    padding:7px 14px;
+
+    border-radius:100px;
+
+    transition:border-color .2s, color .2s, transform .2s;
+  }
+
+  .hero-skills span:hover{
+    color:var(--indigo);
+    border-color:var(--indigo);
+    transform:translateY(-1px);
+  }
+
+  .hero-cta{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    font-family:var(--font-body);
+
+    font-size:14px;
+    font-weight:600;
+
+    padding:13px 22px;
+
+    border-radius:100px;
+
+    transition:
+      transform .15s ease,
+      background .2s,
+      border-color .2s,
+      box-shadow .2s;
+
+    border:1px solid transparent;
+  }
+
+  .btn:active{
+    transform:scale(0.98);
+  }
+
+  .btn-primary{
+    background:linear-gradient(120deg, var(--indigo), #7a63ff);
+    color:#ffffff;
+    box-shadow:0 10px 24px -8px rgba(79,57,246,0.5);
+  }
+
+  .btn-primary:hover{
+    background:linear-gradient(120deg, #3d29e0, var(--indigo));
+    box-shadow:0 12px 28px -6px rgba(79,57,246,0.6);
+  }
+
+  .btn-outline{
+    border-color:var(--line);
+    color:var(--text);
+    background:var(--bg-panel);
+  }
+
+  .btn-outline:hover{
+    border-color:var(--indigo);
+    color:var(--indigo);
+  }
+
+  /* ---------- Projects ---------- */
+
+  .projects-grid{
+    display:grid;
+
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(310px,1fr)
+      );
+
+    gap:20px;
+  }
+
+  .card{
+    position:relative;
+
+    background:var(--bg-panel);
+
+    border:1px solid var(--line);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    transition:
+      border-color .25s,
+      transform .25s,
+      box-shadow .25s;
+  }
+
+  .card:hover{
+    border-color:var(--indigo);
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -22px rgba(20,20,50,0.25);
+  }
+
+  .card:hover .corner{
+    opacity:1;
+  }
+
+  .corner{
+    display:none;
+  }
+
+  .card-head{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px 10px;
+
+    padding:18px 20px;
+
+    border-bottom:1px solid var(--line-soft);
+
+    background:linear-gradient(135deg, var(--bg-panel-alt), var(--bg-panel));
+  }
+
+  .engine-dot{
+    width:9px;
+    height:9px;
+
+    border-radius:50%;
+
+    flex-shrink:0;
+  }
+
+  .engine-dot.ai{
+    background:var(--indigo);
+
+    box-shadow:
+      0 0 8px rgba(79,57,246,0.45);
+  }
+
+  .engine-dot.agent{
+    background:var(--mint);
+
+    box-shadow:
+      0 0 8px rgba(0,200,150,0.45);
+  }
+
+  .engine-dot.automation{
+    background:var(--coral);
+
+    box-shadow:
+      0 0 8px rgba(255,106,69,0.45);
+  }
+
+  .engine-label{
+    font-family:var(--font-mono);
+
+    font-size:10px;
+    font-weight:600;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+
+    color:var(--text-faint);
+
+    margin-right:auto;
+  }
+
+  .card-head h3{
+    flex-basis:100%;
+
+    font-family:var(--font-display);
+
+    font-size:15.5px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+    letter-spacing:-0.005em;
+  }
+
+  .card-body{
+    padding:20px;
+  }
+
+  .card-body p{
+    color:var(--text-dim);
+
+    font-size:14px;
+
+    line-height:1.7;
+  }
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:7px;
+
+    margin-top:16px;
+  }
+
+  .tags span{
+    font-family:var(--font-body);
+    font-weight:600;
+
+    font-size:12px;
+
+    color:var(--indigo);
+
+    background:linear-gradient(135deg, rgba(79,57,246,0.09), rgba(0,200,150,0.09));
+
+    border:1px solid rgba(79,57,246,0.18);
+
+    border-radius:100px;
+
+    padding:6px 13px;
+  }
+
+  .btn-group{
+    margin-top:16px;
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+  }
+
+  .btn-icon{
+    font-family:var(--font-body);
+
+    font-size:12.5px;
+
+    font-weight:600;
+
+    padding:8px 14px;
+
+    border-radius:100px;
+
+    background:#e6faf3;
+
+    border:1px solid rgba(0,200,150,0.35);
+
+    color:#00997a;
+
+    transition:.2s;
+  }
+
+  .btn-icon:hover{
+    background:var(--mint);
+    color:#ffffff;
+    border-color:var(--mint);
+  }
+
+  /* ---------- Capabilities ---------- */
+
+  .capabilities-grid{
+    display:grid;
+
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(240px,1fr)
+      );
+
+    gap:16px;
+  }
+
+  .capability{
+    position:relative;
+
+    background:var(--bg-panel);
+
+    border:1px solid var(--line);
+    border-top:2px solid transparent;
+
+    border-radius:var(--radius);
+
+    padding:22px;
+
+    transition:
+      transform .2s,
+      border-color .2s;
+  }
+
+  .capability::before{
+    content:"";
+    position:absolute;
+    top:-2px;
+    left:16px;
+    right:16px;
+    height:2px;
+
+    border-radius:2px;
+
+    background:linear-gradient(90deg, var(--indigo), var(--mint));
+  }
+
+  .capability:hover{
+    transform:translateY(-4px);
+
+    border-color:var(--indigo);
+  }
+
+  .capability-number{
+    font-family:var(--font-mono);
+
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.04em;
+
+    color:var(--indigo);
+
+    margin-bottom:14px;
+  }
+
+  .capability h3{
+    font-family:var(--font-display);
+
+    font-size:17.5px;
+    font-weight:600;
+
+    margin-bottom:8px;
+
+    color:var(--text);
+  }
+
+  .capability p{
+    color:var(--text-dim);
+
+    font-size:13.5px;
+
+    line-height:1.65;
+  }
+
+  /* ---------- Contact ---------- */
+
+  #contact .section-head p{
+    color:var(--text-dim);
+
+    max-width:520px;
+  }
+
+  .cards{
+    display:grid;
+
+    grid-template-columns:
+      repeat(
+        auto-fit,
+        minmax(240px,1fr)
+      );
+
+    gap:16px;
+
+    margin-top:32px;
+  }
+
+  .contact-card{
+    background:var(--bg-panel);
+
+    border:1px solid var(--line);
+
+    border-radius:var(--radius);
+
+    padding:22px;
+  }
+
+  .contact-card h3{
+    font-family:var(--font-mono);
+
+    font-size:11.5px;
+
+    color:var(--text-dim);
+
+    font-weight:500;
+
+    margin-bottom:12px;
+
+    letter-spacing:0.06em;
+
+    text-transform:uppercase;
+  }
+
+  .contact-card a{
+    color:var(--indigo);
+
+    font-size:14.5px;
+    font-weight:500;
+
+    word-break:break-all;
+  }
+
+  .contact-card button{
+    margin-top:16px;
+
+    width:100%;
+
+    padding:11px 12px;
+
+    border-radius:100px;
+
+    border:1px solid var(--line);
+
+    background:var(--bg-panel);
+
+    color:var(--text);
+
+    font-family:var(--font-body);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s;
+  }
+
+  .contact-card button:hover{
+    background:linear-gradient(120deg, var(--indigo), #7a63ff);
+
+    color:#ffffff;
+
+    border-color:var(--indigo);
+  }
+
+  footer{
+    text-align:center;
+
+    padding:32px 20px;
+
+    color:var(--text-faint);
+
+    font-family:var(--font-body);
+
+    font-size:12px;
+
+    border-top:1px solid var(--line);
+  }
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="toolbar">
+
+  <div class="toolbar-left">
+
+    <a href="#hero" class="toolbar-logo">
+      Faizan Ahmed
+    </a>
+
+    <span class="toolbar-role">
+      AI Engineer
+    </span>
+
+  </div>
+
+  <div class="toolbar-menu">
+
+    <a href="#projects">
+      Projects
+    </a>
+
+    <a href="#capabilities">
+      Capabilities
+    </a>
+
+    <a href="#contact">
+      Contact
+    </a>
+
+  </div>
+
+  <div class="toolbar-status">
+
+    <span class="dot-live"></span>
+
+    Available for AI Projects
+
+  </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section id="hero">
+
+  <div class="viewport">
+
+    <div class="viewport-inner">
+
+      <h1>
+
+        I'm
+        <span class="name">
+          Faizan Ahmed
+        </span>
+
+        — I build AI systems that understand information, reason over data, automate workflows, and
+        <span class="accent-underline">
+          take action.
+        </span>
+
+      </h1>
+
+
+      <p class="hero-desc">
+
+        I build practical AI applications using
+        <b>LLMs, RAG, AI agents, structured data, APIs, automation, and intelligent workflows.</b>
+
+        <br><br>
+
+        My work ranges from knowledge-based AI assistants and HR agents to
+        <b>AI data analysts, WhatsApp automation, SEO content systems, real-estate AI, document processing, browser automation, and AI-powered business workflows.</b>
+
+      </p>
+
+
+      <div class="hero-skills">
+
+        <span>AI Agents</span>
+
+        <span>RAG</span>
+
+        <span>LLMs</span>
+
+        <span>OpenAI</span>
+
+        <span>Vector Search</span>
+
+        <span>Python</span>
+
+        <span>Node.js</span>
+
+        <span>Fastify</span>
+
+        <span>Next.js</span>
+
+        <span>AI Automation</span>
+
+        <span>APIs</span>
+
+        <span>Workflow Systems</span>
+
+      </div>
+
+
+      <div class="hero-cta">
+
+        <a href="#projects" class="btn btn-primary">
+          ▶ View AI Projects
+        </a>
+
+        <a href="#contact" class="btn btn-outline">
+          ✉ Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FEATURED PROJECTS
+========================================================= -->
+
+<section id="projects">
+
+  <div class="section-head">
+
+    <div class="eyebrow">
+      AI Project Browser
+    </div>
+
+    <h2>
+      Featured AI Projects
+    </h2>
+
+  </div>
+
+
+  <div class="projects-grid">
+
+
+    <!-- =====================================================
+         PROJECT 01
+    ====================================================== -->
+
+    <div class="card">
+
+      <div class="corner tl"></div>
+      <div class="corner br"></div>
+
+      <div class="card-head">
+
+        <span class="engine-dot agent"></span>
+        <span class="engine-label">AI Agent</span>
+
+        <h3>
+          Automated RAG Agent — HR Workflow & Action System
+        </h3>
+
+      </div>
+
+
+      <div class="card-body">
+
+        <p>
+
+          Built a RAG-powered HR agent that understands user intent and determines whether a request requires an answer or an action.
+
+          <br><br>
+
+          Policy questions use retrieval-based responses, while supported HR requests can trigger workflows such as leave requests, HR contact actions, and status-related data retrieval.
+
+          <br><br>
+
+          The system combines LLM reasoning, retrieval, structured workflows, and backend actions into a practical AI assistant.
+
+        </p>
+
+
+        <div class="btn-group">
+
+          <a
+            class="btn-icon"
+            href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview"
+            target="_blank"
+          >
+            ▶ Video
+          </a>
+
+        </div>
+
+
+        <div class="tags">
+
+          <span>AI Agent</span>
+          <span>RAG</span>
+          <span>HR Automation</span>
+          <span>LLM</span>
+          <span>Workflow Automation</span>
+          <span>Agent Actions</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROJECT 02
+    ====================================================== -->
+
+    <div class="card">
+
+      <div class="corner tl"></div>
+      <div class="corner br"></div>
+
+      <div class="card-head">
+
+        <span class="engine-dot agent"></span>
+        <span class="engine-label">AI Agent</span>
+
+        <h3>
+          Employee RAG Agent — Secure HR Knowledge Assistant
+        </h3>
+
+      </div>
+
+
+      <div class="card-body">
+
+        <p>
+
+          Built a secure RAG-based HR assistant that allows employees to query company and HR information through natural language.
+
+          <br><br>
+
+          The system identifies the employee and retrieves relevant information while enforcing employee-specific access so users only receive information they are authorized to access.
+
+          <br><br>
+
+          The assistant can answer questions around employee information such as leave balance, tax details, and other HR data.
+
+        </p>
+
+
+        <div class="btn-group">
+
+          <a
+            class="btn-icon"
+            href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview"
+            target="_blank"
+          >
+            ▶ Video
+          </a>
+
+        </div>
+
+
+        <div class="tags">
+
+          <span>AI Agent</span>
+          <span>RAG</span>
+          <span>Employee Data</span>
+          <span>HR AI</span>
+          <span>Vector Search</span>
+          <span>Access Control</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROJECT 03
+    ====================================================== -->
+
+    <div class="card">
+
+      <div class="corner tl"></div>
+      <div class="corner br"></div>
+
+      <div class="card-head">
+
+        <span class="engine-dot ai"></span>
+        <span class="engine-label">AI System</span>
+
+        <h3>
+          AI Chatbot Assistant — Intelligent Conversation System
+        </h3>
+
+      </div>
+
+
+      <div class="card-body">
+
+        <p>
+
+          Built a custom AI chatbot assistant for natural, context-aware conversations and practical task handling.
+
+          <br><br>
+
+          The system connects users with an intelligent assistant capable of understanding requests, maintaining conversation context, and generating relevant responses through a structured AI workflow.
+
+          <br><br>
+
+          Designed as a scalable foundation for business assistants, internal tools, and AI-powered applications.
+
+        </p>
+
+
+        <div class="btn-group">
+
+          <a
+            class="btn-icon"
+            href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview"
+            target="_blank"
+          >
+            ▶ Video
+          </a>
+
+        </div>
+
+
+        <div class="tags">
+
+          <span>AI Chatbot</span>
+          <span>Conversational AI</span>
+          <span>OpenAI</span>
+          <span>LLM</span>
+          <span>Context</span>
+          <span>AI Assistant</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CAPABILITIES
+========================================================= -->
+
+<section id="capabilities">
+
+  <div class="section-head">
+
+    <div class="eyebrow">
+      Capabilities
+    </div>
+
+    <h2>
+      What I Build
+    </h2>
+
+  </div>
+
+
+  <div class="capabilities-grid">
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        01 / AGENTS
+      </div>
+
+      <h3>
+        AI Agents
+      </h3>
+
+      <p>
+        AI systems that understand intent, retrieve information, reason through requests, and perform structured actions.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        02 / RAG
+      </div>
+
+      <h3>
+        RAG & Knowledge Systems
+      </h3>
+
+      <p>
+        Retrieval-based AI assistants that connect LLMs with documents, company knowledge, and structured information.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        03 / DATA
+      </div>
+
+      <h3>
+        AI Data Analysts
+      </h3>
+
+      <p>
+        Natural-language interfaces that allow users to ask business questions about structured datasets and receive useful answers.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        04 / AUTOMATION
+      </div>
+
+      <h3>
+        Workflow Automation
+      </h3>
+
+      <p>
+        AI-powered workflows that connect language models with business processes, APIs, data sources, and external tools.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        05 / VOICE
+      </div>
+
+      <h3>
+        Voice AI
+      </h3>
+
+      <p>
+        AI calling and voice systems combining telephony, speech recognition, LLM reasoning, transcription, and text-to-speech.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        06 / DOCUMENTS
+      </div>
+
+      <h3>
+        AI Document Processing
+      </h3>
+
+      <p>
+        AI workflows that extract, summarize, validate, and structure information from PDFs and other unstructured documents.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        07 / BUSINESS
+      </div>
+
+      <h3>
+        AI Business Automation
+      </h3>
+
+      <p>
+        AI systems for HR, customer support, real estate, sales assistance, lead handling, and operational workflows.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        08 / REAL WORLD
+      </div>
+
+      <h3>
+        AI + Real-World Tools
+      </h3>
+
+      <p>
+        AI agents connected to browsers, APIs, live data, external services, and scheduled processes to perform useful tasks.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        09 / CONTENT
+      </div>
+
+      <h3>
+        AI Content Systems
+      </h3>
+
+      <p>
+        Automated workflows for SEO content, YouTube production, story generation, scene planning, prompts, and voice scripts.
+      </p>
+
+    </div>
+
+
+    <div class="capability">
+
+      <div class="capability-number">
+        10 / INTEGRATION
+      </div>
+
+      <h3>
+        AI API Integration
+      </h3>
+
+      <p>
+        Connecting AI models with APIs, backend services, databases, external platforms, and custom application interfaces.
+      </p>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
+
+<section id="contact">
+
+  <div class="section-head">
+
+    <div class="eyebrow">
+      Build Settings
+    </div>
+
+    <h2>
+      Let's Build Something Intelligent
+    </h2>
+
+    <p>
+
+      If you need an AI agent, RAG system, automation workflow, AI assistant, data analyst, or custom LLM-powered application, reach out below.
+
+    </p>
+
+  </div>
+
+
+  <div class="cards">
+
+
+    <div class="contact-card">
+
+      <h3>
+        📧 EMAIL
+      </h3>
+
+      <p>
+
+        <a
+          id="emailLink"
+          href="mailto:faizanahmed21@hotmail.com"
+        >
+          faizanahmed21@hotmail.com
+        </a>
+
+      </p>
+
+      <button onclick="copyEmail()">
+        Copy Email
+      </button>
+
+    </div>
+
+
+    <div class="contact-card">
+
+      <h3>
+        📋 RESUME
+      </h3>
+
+      <p>
+
+        <a>
+          Download my latest resume
+        </a>
+
+      </p>
+
+      <button
+        onclick="window.location.href='https://drive.google.com/file/d/14GO1jk2TkBsJquOiF4jnZzeit-zA0n2b/view?usp=sharing';"
+      >
+        Download
+      </button>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  © 2026 Faizan Ahmed — AI Engineer
+
+</footer>
+
+
+
+<script>
+
+  function copyEmail(){
+
+    const email =
+      "faizanahmed21@hotmail.com";
+
+    navigator.clipboard
+      .writeText(email)
+      .then(() => {
+
+        alert(
+          "Email copied: " + email
+        );
+
+      });
+
+  }
+
+</script>
+
+
+</body>
+</html>
