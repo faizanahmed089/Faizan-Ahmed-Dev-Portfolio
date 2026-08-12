@@ -241,6 +241,12 @@
   }
 
   @media (max-width:760px){
+    .viewport-inner{
+      max-width:100%;
+    }
+  }
+
+  @media (max-width:760px){
 
     .toolbar-menu{
       display:none;
@@ -334,9 +340,19 @@
     max-width:1120px;
     margin:0 auto;
     position:relative;
+
+    /* Keep the hero headline, description, skills, and CTAs on one
+       consistent content axis and prevent the headline from becoming
+       wider than the supporting content. */
+    max-width:850px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
   }
 
   .hero h1{
+    text-align:center;
+
     font-family:var(--font-body);
     font-weight:400;
     color:var(--text-dim);
@@ -346,7 +362,8 @@
     line-height:1.75;
     letter-spacing:0;
 
-    max-width:620px;
+    /* Same width as the supporting hero content. */
+    max-width:850px;
 
     margin-bottom:24px;
   }
@@ -384,7 +401,8 @@
   }
 
   .hero-desc{
-    max-width:720px;
+    text-align:left;
+    max-width:850px;
 
     color:var(--text-dim);
 
@@ -400,14 +418,25 @@
   }
 
   .hero-skills{
+    text-align:left;
     display:flex;
     flex-wrap:wrap;
     align-items:center;
+    justify-content:flex-start;
 
     gap:8px;
 
     margin-bottom:36px;
 
+    max-width:850px;
+  }
+
+  /* All hero content uses the same 850px alignment width. */
+  .hero h1,
+  .hero-desc,
+  .hero-skills,
+  .hero-cta{
+    width:100%;
     max-width:850px;
   }
 
@@ -439,6 +468,8 @@
 
   .hero-cta{
     display:flex;
+    justify-content:center;
+    align-items:center;
     gap:14px;
     flex-wrap:wrap;
   }
@@ -597,6 +628,9 @@
 
   .card-head h3{
     flex-basis:100%;
+    width:100%;
+    margin:0;
+    padding:0;
 
     font-family:var(--font-display);
 
@@ -611,6 +645,14 @@
 
   .card-body{
     padding:20px;
+  }
+
+  /* Keep description, tags, and buttons aligned with the card title. */
+  .card-body > p,
+  .card-body > .tags,
+  .card-body > .btn-group{
+    margin-left:0;
+    margin-right:0;
   }
 
   .card-body p{
