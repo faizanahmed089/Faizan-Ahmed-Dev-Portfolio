@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Faizan Ahmed — AI Engineer | AI Agents, RAG & Automation</title>
-
+<title>Faizan Ahmed — Senior Software Engineer | Unity & Unreal | AI Solutions Architect</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 
   :root{
@@ -340,31 +338,17 @@
     max-width:1120px;
     margin:0 auto;
     position:relative;
-
-    /* Keep the hero headline, description, skills, and CTAs on one
-       consistent content axis and prevent the headline from becoming
-       wider than the supporting content. */
-    max-width:1120px;
-    margin-left:auto;
-    margin-right:auto;
     text-align:left;
   }
 
   .hero h1{
-    text-align:center;
-
+    text-align:left;
     font-family:var(--font-body);
     font-weight:400;
     color:var(--text-dim);
-
-    font-size:clamp(16.5px, 1.9vw, 19px);
-
+    font-size:1.7rem;
     line-height:1.75;
     letter-spacing:0;
-
-    /* Same width as the supporting hero content. */
-    max-width:1120px;
-
     margin-bottom:24px;
   }
 
@@ -373,42 +357,17 @@
     font-weight:700;
     font-size:1.3em;
     letter-spacing:-0.01em;
-
     background:linear-gradient(120deg, var(--text) 15%, var(--indigo) 75%, var(--coral) 125%);
     -webkit-background-clip:text;
     background-clip:text;
     color:transparent;
   }
 
-  .hero h1 .accent-underline{
-    position:relative;
-    font-weight:600;
-    color:var(--text);
-  }
-
-  .hero h1 .accent-underline::after{
-    content:"";
-    position:absolute;
-    left:0;
-    right:0;
-    bottom:1px;
-
-    height:7px;
-    border-radius:2px;
-
-    background:linear-gradient(90deg, rgba(26,157,111,0.35), rgba(109,91,208,0.28));
-    z-index:-1;
-  }
-
   .hero-desc{
     text-align:left;
-    max-width:1120px;
-
     color:var(--text-dim);
-
     font-size:18px;
     line-height:1.7;
-
     margin-bottom:32px;
   }
 
@@ -423,40 +382,20 @@
     flex-wrap:wrap;
     align-items:center;
     justify-content:flex-start;
-
     gap:8px;
-
-    margin-bottom:36px;
-
-    max-width:1120px;
-  }
-
-  /* All hero content uses the same 850px alignment width. */
-  .hero h1,
-  .hero-desc,
-  .hero-skills,
-  .hero-cta{
-    width:100%;
-    max-width:1120px;
+    margin-bottom:48px;
   }
 
   .hero-skills span{
     font-family:var(--font-body);
     font-weight:500;
     font-size:13px;
-
     color:var(--text-dim);
-
     background:var(--bg-panel);
-
     border:1px solid var(--line);
-
     padding:7px 14px;
-
     border-radius:100px;
-
     box-shadow:var(--shadow);
-
     transition:border-color .2s, color .2s, transform .2s;
   }
 
@@ -472,28 +411,19 @@
     align-items:center;
     gap:14px;
     flex-wrap:wrap;
+    width: 100%;
   }
 
   .btn{
     display:inline-flex;
     align-items:center;
     gap:8px;
-
     font-family:var(--font-body);
-
     font-size:14px;
     font-weight:600;
-
     padding:13px 22px;
-
     border-radius:100px;
-
-    transition:
-      transform .15s ease,
-      background .2s,
-      border-color .2s,
-      box-shadow .2s;
-
+    transition: transform .15s ease, background .2s, border-color .2s, box-shadow .2s;
     border:1px solid transparent;
   }
 
@@ -523,38 +453,68 @@
     color:var(--indigo);
   }
 
-  /* ---------- Projects ---------- */
+  /* ---------- Projects Redesign ---------- */
+
+  .project-zone {
+    padding: 60px 0;
+    border-radius: 24px;
+    margin-bottom: 40px;
+    transition: all 0.3s ease;
+  }
+
+  .zone-ai {
+    background: linear-gradient(180deg, rgba(63,102,214,0.12) 0%, transparent 100%);
+    border-left: 6px solid var(--llm);
+    padding-left: 30px;
+  }
+
+  .zone-game {
+    background: linear-gradient(180deg, rgba(109,91,208,0.12) 0%, transparent 100%);
+    border-left: 6px solid var(--indigo);
+    padding-left: 30px;
+  }
+
+  .zone-header {
+    margin-bottom: 40px;
+  }
+
+  .zone-header h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .zone-header p {
+    color: var(--text-dim);
+    font-size: 16px;
+    max-width: 100%; 
+  }
 
   .projects-grid{
     display:grid;
-
-    grid-template-columns:
-      repeat(
-        auto-fit,
-        minmax(310px,1fr)
-      );
-
-    gap:20px;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    gap:24px;
   }
 
   .card{
     position:relative;
-
     background:var(--bg-panel);
-
     border:1px solid var(--line);
-
     border-radius:var(--radius);
-
     overflow:hidden;
-
     box-shadow:var(--shadow);
-
-    transition:
-      border-color .25s,
-      transform .25s,
-      box-shadow .25s;
+    transition: border-color .25s, transform .25s, box-shadow .25s;
+    border-top: 4px solid transparent; 
   }
+
+  .zone-ai .card { border-top-color: var(--llm); }
+  .zone-game .card { border-top-color: var(--indigo); }
 
   .card:hover{
     border-color:var(--indigo);
@@ -562,84 +522,36 @@
     box-shadow:0 12px 32px rgba(109,91,208,0.16);
   }
 
-  .card:hover .corner{
-    opacity:1;
-  }
-
-  .corner{
-    display:none;
-  }
-
   .card-head{
     display:flex;
     flex-wrap:wrap;
     align-items:center;
     gap:8px 10px;
-
     padding:18px 20px;
-
     border-bottom:1px solid var(--line-soft);
-
     background:linear-gradient(135deg, var(--bg-panel-alt), var(--bg-panel));
   }
 
   .engine-dot{
     width:9px;
     height:9px;
-
     border-radius:50%;
-
     flex-shrink:0;
   }
 
-  .engine-dot.ai{
-    background:var(--llm);
-
-    box-shadow:
-      0 0 0 3px rgba(63,102,214,0.18);
-  }
-
-  .engine-dot.agent{
-    background:var(--mint);
-
-    box-shadow:
-      0 0 0 3px rgba(26,157,111,0.18);
-  }
-
-  .engine-dot.automation{
-    background:var(--coral);
-
-    box-shadow:
-      0 0 0 3px rgba(209,101,63,0.18);
-  }
-
-  .engine-label{
-    font-family:var(--font-mono);
-
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-
-    color:var(--text-faint);
-
-    margin-right:auto;
-  }
+  .engine-dot.ai{ background:var(--llm); box-shadow: 0 0 0 3px rgba(63,102,214,0.18); }
+  .engine-dot.unity{ background:var(--indigo); box-shadow: 0 0 0 3px rgba(109,91,208,0.18); }
+  .engine-dot.unreal{ background:var(--llm); box-shadow: 0 0 0 3px rgba(63,102,214,0.18); }
 
   .card-head h3{
     flex-basis:100%;
     width:100%;
     margin:0;
     padding:0;
-
     font-family:var(--font-display);
-
     font-size:15.5px;
-
     font-weight:700;
-
     color:var(--text);
-
     letter-spacing:-0.005em;
   }
 
@@ -647,75 +559,46 @@
     padding:20px;
   }
 
-  /* Keep description, tags, and buttons aligned with the card title. */
-  .card-body > p,
-  .card-body > .tags,
-  .card-body > .btn-group{
-    margin-left:0;
-    margin-right:0;
-  }
-
   .card-body p{
     color:var(--text-dim);
-
     font-size:14px;
-
     line-height:1.7;
   }
 
   .tags{
     display:flex;
     flex-wrap:wrap;
-
     gap:6px;
-
     margin-top:16px;
   }
 
   .tags span{
     font-family:var(--font-mono);
     font-weight:600;
-
     font-size:11px;
-
     color:var(--indigo);
-
     background:var(--indigo-soft);
-
     border:1px solid rgba(109,91,208,0.22);
-
     border-radius:20px;
-
     padding:4px 11px;
   }
 
   .btn-group{
     margin-top:16px;
-
     display:flex;
-
     gap:8px;
-
     flex-wrap:wrap;
   }
 
   .btn-icon{
     font-family:var(--font-body);
-
     font-size:12.5px;
-
     font-weight:600;
-
     padding:8px 14px;
-
     border-radius:100px;
-
     background:var(--mint-tint);
-
     border:1px solid rgba(26,157,111,0.3);
-
     color:var(--mint);
-
     transition:.2s;
   }
 
@@ -725,873 +608,406 @@
     border-color:var(--mint);
   }
 
-  /* ---------- Capabilities ---------- */
-
-  .capabilities-grid{
-    display:grid;
-
-    grid-template-columns:
-      repeat(
-        auto-fit,
-        minmax(240px,1fr)
-      );
-
-    gap:16px;
-  }
-
-  .capability{
-    position:relative;
-
-    background:var(--bg-panel);
-
-    border:1px solid var(--line);
-    border-top:2px solid transparent;
-
-    border-radius:var(--radius);
-
-    padding:22px;
-
-    box-shadow:var(--shadow);
-
-    transition:
-      transform .2s,
-      border-color .2s;
-  }
-
-  .capability::before{
-    content:"";
-    position:absolute;
-    top:-2px;
-    left:16px;
-    right:16px;
-    height:2px;
-
-    border-radius:2px;
-
-    background:linear-gradient(90deg, var(--indigo), var(--coral));
-  }
-
-  .capability:hover{
-    transform:translateY(-4px);
-
-    border-color:var(--indigo);
-  }
-
-  .capability-number{
-    font-family:var(--font-mono);
-
-    font-size:10.5px;
-    font-weight:600;
-    letter-spacing:0.04em;
-
-    color:var(--indigo);
-
-    margin-bottom:14px;
-  }
-
-  .capability h3{
-    font-family:var(--font-display);
-
-    font-size:17.5px;
-    font-weight:700;
-
-    margin-bottom:8px;
-
-    color:var(--text);
-  }
-
-  .capability p{
-    color:var(--text-dim);
-
-    font-size:13.5px;
-
-    line-height:1.65;
-  }
-
   /* ---------- Contact ---------- */
 
   #contact .section-head p{
     color:var(--text-dim);
-
     max-width:520px;
   }
 
   .cards{
     display:grid;
-
-    grid-template-columns:
-      repeat(
-        auto-fit,
-        minmax(240px,1fr)
-      );
-
+    grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
     gap:16px;
-
     margin-top:32px;
   }
 
   .contact-card{
     background:var(--bg-panel);
-
     border:1px solid var(--line);
-
     border-radius:var(--radius);
-
     padding:22px;
-
     box-shadow:var(--shadow);
   }
 
   .contact-card h3{
     font-family:var(--font-mono);
-
     font-size:11.5px;
-
     color:var(--text-dim);
-
     font-weight:500;
-
     margin-bottom:12px;
-
     letter-spacing:0.06em;
-
     text-transform:uppercase;
   }
 
   .contact-card a{
     color:var(--indigo);
-
     font-size:14.5px;
     font-weight:500;
-
     word-break:break-all;
   }
 
   .contact-card button{
     margin-top:16px;
-
     width:100%;
-
     padding:11px 12px;
-
     border-radius:100px;
-
     border:1px solid var(--line);
-
     background:var(--bg-panel);
-
     color:var(--text);
-
     font-family:var(--font-body);
-
     font-size:13px;
-
     font-weight:600;
-
     cursor:pointer;
-
     transition:.2s;
   }
 
   .contact-card button:hover{
     background:linear-gradient(120deg, var(--indigo), var(--coral));
-
     color:#ffffff;
-
     border-color:transparent;
-
     box-shadow:0 4px 14px rgba(109,91,208,0.3);
   }
 
   footer{
     text-align:center;
-
     padding:32px 20px;
-
     color:var(--text-faint);
-
     font-family:var(--font-body);
-
     font-size:12px;
-
     border-top:1px solid var(--line);
   }
 
 </style>
 </head>
-
 <body>
 
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
-
 <nav class="toolbar">
-
   <div class="toolbar-left">
-
-    <a href="#hero" class="toolbar-logo">
-      Faizan Ahmed
-    </a>
-
-    <span class="toolbar-role">
-      AI Engineer
-    </span>
-
+    <!-- <a href="#hero" class="toolbar-logo">Faizan Ahmed</a> -->
+    <!-- <span class="toolbar-role">Senior Software Engineer | AI Solutions Architect</span> -->
   </div>
-
   <div class="toolbar-menu">
-
-    <a href="#projects">
-      Projects
-    </a>
-
-    <a href="#capabilities">
-      Capabilities
-    </a>
-
-    <a href="#contact">
-      Contact
-    </a>
-
+    <a href="#ai-projects">AI Projects</a>
+    <a href="#game-projects">Game Projects</a>
+    <a href="#contact">Contact</a>
   </div>
-
-  <div class="toolbar-status">
-
-    <span class="dot-live"></span>
-
-    Open to Jobs & Projects
-
-  </div>
-
+  <div class="toolbar-status"><span class="dot-live"></span> Open to Work</div>
 </nav>
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
 <section id="hero">
-
   <div class="viewport">
-
     <div class="viewport-inner">
-
-      <h1>
-
-        I'm
-        <span class="name">
-          Faizan Ahmed
-        </span>
-
-        — I build AI systems that understand information, reason over data, automate workflows, and
-        <span class="accent-underline">
-          take action.
-        </span>
-
+      <h1 style="font-size: 1.7rem;">
+        <span class="name">Faizan Ahmed</span> - Senior Software Engineer | Unity & Unreal | AI Solutions Architect
       </h1>
 
-
       <p class="hero-desc">
+        <br>
+        With <b>5+ years of experience</b> and a strong orientation to detail, I take full ownership of the software development lifecycle—from initial architectural design and implementation to testing, deployment, and final delivery.
         <br><br>
-        I build practical AI applications using
-        <b>LLMs, RAG, AI agents, structured data, APIs, automation, and intelligent workflows.</b>
-
+        <b>Game Development:</b> Expert in <b>Unity and Unreal Engine</b>, specializing in scalable mobile, web, and hyper-casual games. Deeply proficient in <b>Firebase, In-App Purchases (IAP), API integrations</b>, and developing custom <b>native SDK wrappers</b>.
         <br><br>
-
-        I've built things like knowledge-based AI assistants and HR agents,
-        <b>AI data analysts, WhatsApp automation, SEO content systems, real-estate AI, document processing, browser automation, AI-powered business workflows — and more.</b>
-
+        <b>AI Engineering:</b> Specializing in <b>RAG, LLMs, and semantic search</b> to build intelligent AI voice agents and WhatsApp bots. Experienced in architecting scalable, low-latency AI systems using <b>Redis, Celery, and Groq</b> with robust token rate-limiting mechanisms.
       </p>
-
 
       <div class="hero-skills">
-
-        <span>AI Agents</span>
-
-        <span>RAG</span>
-
-        <span>LLMs</span>
-
-        <span>OpenAI</span>
-
-        <span>Vector Search</span>
-
-        <span>Python</span>
-
-        <span>Node.js</span>
-
-        <span>Fastify</span>
-
-        <span>Next.js</span>
-
-        <span>AI Automation</span>
-
-        <span>APIs</span>
-
-        <span>Workflow Systems</span>
-
+          <!-- Game Dev Stack -->
+          <span>Unity</span><span>Unreal Engine</span>
+          <span>Firebase</span><span>IAP</span>
+          <span>API Integration</span><span>Native SDK Wrappers</span>
+          <span>Environment Design</span><span>2D Rigging</span>
+          
+          <!-- AI Stack -->
+          <span>RAG</span><span>Computer Vision</span>
+          <span>LLMs</span><span>Pinecone</span>
+          <span>WhatsApp Bots</span><span>ML-Agents</span>
+          <span>PCG</span><span>Redis</span>
+          <span>Celery</span><span>Playwright</span>
+          <span>Twilio</span><span>Groq</span>
       </div>
-
 
       <div class="hero-cta">
-
-        <a href="#projects" class="btn btn-primary">
-          ▶ View AI Projects
-        </a>
-
-        <a href="#contact" class="btn btn-outline">
-          ✉ Contact
-        </a>
-
+        <a href="#ai-projects" class="btn btn-primary">▶ View AI Projects</a>
+        <a href="#game-projects" class="btn btn-outline">🎮 View Game Projects</a>
       </div>
-
     </div>
-
   </div>
-
 </section>
-
-
-
-<!-- =========================================================
-     FEATURED PROJECTS
-========================================================= -->
 
 <section id="projects">
-
   <div class="section-head">
-
-    <div class="eyebrow">
-      AI Project Browser
-    </div>
-
-    <h2>
-      Featured AI Projects
-    </h2>
-
+    <div class="eyebrow">Project Browser</div>
+    <h2>Portfolio Showcase</h2>
   </div>
 
-
-  <div class="projects-grid">
-
-
-    <!-- =====================================================
-         PROJECT 01
-    ====================================================== -->
-
-    <div class="card">
-
-      <div class="corner tl"></div>
-      <div class="corner br"></div>
-
-      <div class="card-head">
-
-        <span class="engine-dot agent"></span>
-        <span class="engine-label">AI Agent</span>
-
-        <h3>
-          Automated RAG Agent — HR Workflow & Action System
-        </h3>
-
-      </div>
-
-
-      <div class="card-body">
-
-        <p>
-
-          Built a RAG-powered HR agent that understands user intent and determines whether a request requires an answer or an action.
-
-          <br><br>
-
-          Policy questions use retrieval-based responses, while supported HR requests can trigger workflows such as leave requests, HR contact actions, and status-related data retrieval.
-
-          <br><br>
-
-          The system combines LLM reasoning, retrieval, structured workflows, and backend actions into a practical AI assistant.
-
-        </p>
-
-
-        <div class="btn-group">
-
-          <a
-            class="btn-icon"
-            href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview"
-            target="_blank"
-          >
-            ▶ Video
-          </a>
-
-        </div>
-
-
-        <div class="tags">
-
-          <span>AI Agent</span>
-          <span>RAG</span>
-          <span>HR Automation</span>
-          <span>LLM</span>
-          <span>Workflow Automation</span>
-          <span>Agent Actions</span>
-
-        </div>
-
-      </div>
-
+  <!-- AI ENGINEERING ZONE -->
+  <div id="ai-projects" class="project-zone zone-ai">
+    <div class="zone-header">
+      <h3><span class="engine-dot ai"></span> AI Engineering</h3>
+      <p>Designing intelligent agents, RAG systems, and LLM-powered automation to solve real-world business challenges.</p>
     </div>
 
-
-
-    <!-- =====================================================
-         PROJECT 02
-    ====================================================== -->
-
-    <div class="card">
-
-      <div class="corner tl"></div>
-      <div class="corner br"></div>
-
-      <div class="card-head">
-
-        <span class="engine-dot agent"></span>
-        <span class="engine-label">AI Agent</span>
-
-        <h3>
-          Employee RAG Agent — Secure HR Knowledge Assistant
-        </h3>
-
+    <div class="projects-grid">
+       <div class="card">
+        <div class="card-head"><span class="engine-dot ai"></span><h3>VisionQC: Industrial Computer Vision Auditor</h3></div>
+        <div class="card-body">
+          <p>Engineered a CV system for real-time defect detection on electronics lines, using RAG to audit live feeds against industrial SOPs.
+          <br><br>
+          • Built a tool-calling pipeline to detect circuitry failures and trigger emergency line stops to prevent batch failure.
+          </p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1NJ3ifZXx0dVOGjXW3MjbmAf1Iw_AJKAe/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Computer Vision</span><span>RAG</span><span>Industrial AI</span><span>Tool Use</span></div>
+        </div>
       </div>
 
-
-      <div class="card-body">
-
-        <p>
-
-          Built a secure RAG-based HR assistant that allows employees to query company and HR information through natural language.
-
+      <div class="card">
+        <div class="card-head"><span class="engine-dot ai"></span><h3>DocuVerify: Multimodal Compliance Engine</h3></div>
+        <div class="card-body">
+          <p>Developed a multimodal verification system for automated invoice intelligence and corporate document auditing using RAG.
           <br><br>
-
-          The system identifies the employee and retrieves relevant information while enforcing employee-specific access so users only receive information they are authorized to access.
-
-          <br><br>
-
-          The assistant can answer questions around employee information such as leave balance, tax details, and other HR data.
-
-        </p>
-
-
-        <div class="btn-group">
-
-          <a
-            class="btn-icon"
-            href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview"
-            target="_blank"
-          >
-            ▶ Video
-          </a>
-
+          • Implemented a modular rule-set and tool-calling pipeline to autonomously approve or reject documents based on compliance markers.
+          </p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1OsGfrllaEgqbETfk1yuvs4V_w-Vw7wv7/view" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Multimodal AI</span><span>RAG</span><span>Compliance</span><span>Tool Use</span></div>
         </div>
-
-
-        <div class="tags">
-
-          <span>AI Agent</span>
-          <span>RAG</span>
-          <span>Employee Data</span>
-          <span>HR AI</span>
-          <span>Vector Search</span>
-          <span>Access Control</span>
-
-        </div>
-
       </div>
 
+      <div class="card">
+        <div class="card-head"><span class="engine-dot ai"></span><h3>WhatsApp OmniChannel Workflow Engine</h3></div>
+        <div class="card-body">
+          <p>Engineered a WhatsApp system for complaint registration with structured workflows and strict input validation.
+          <br><br>
+          • Automated unique ID generation, Google Sheets syncing, and real-time email alerts for technical teams.
+          </p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1nCgYvtM9bz1YGZxz3gHq1Cdr29aurIWs/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>WhatsApp API</span><span>Workflow Automation</span><span>Conversational AI</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot ai"></span><h3>Knowledge Orchestrator: Secure RAG Pipeline</h3></div>
+        <div class="card-body">
+          <p>Built a RAG system for querying company and HR data using natural language and semantic retrieval.
+          <br><br>
+          • Combined LLM reasoning and tool-calling to execute backend actions from a modular knowledge base.
+          </p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1SghhzTAsHP04Eafl0o0y-iT20fk4bK-e/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>RAG</span><span>Semantic Search</span><span>Pinecone</span><span>LLMs</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot ai"></span><h3>OmniCache AI Orchestrator</h3></div>
+        <div class="card-body">
+          <p>Developed a cost-optimized orchestrator using a 3-tier cache (Postgres → Pinecone → LLM) to reduce API latency.
+          <br><br>
+          • Integrated Groq Whisper for real-time speech-to-text and implemented a custom token-tracking quota system.
+          </p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1pw-3ykKF1S3k4nMexzoxHyJEeRCHIdtV/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Groq</span><span>Redis</span><span>Multi-tier Cache</span><span>FastAPI</span></div>
+        </div>
+      </div>
     </div>
-
-
-
-    <!-- =====================================================
-         PROJECT 03
-    ====================================================== -->
-
-    <div class="card">
-
-      <div class="corner tl"></div>
-      <div class="corner br"></div>
-
-      <div class="card-head">
-
-        <span class="engine-dot ai"></span>
-        <span class="engine-label">AI System</span>
-
-        <h3>
-          AI Chatbot Assistant — Intelligent Conversation System
-        </h3>
-
-      </div>
-
-
-      <div class="card-body">
-
-        <p>
-
-          Built a custom AI chatbot assistant for natural, context-aware conversations and practical task handling.
-
-          <br><br>
-
-          The system connects users with an intelligent assistant capable of understanding requests, maintaining conversation context, and generating relevant responses through a structured AI workflow.
-
-          <br><br>
-
-          Designed as a scalable foundation for business assistants, internal tools, and AI-powered applications.
-
-        </p>
-
-
-        <div class="btn-group">
-
-          <a
-            class="btn-icon"
-            href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview"
-            target="_blank"
-          >
-            ▶ Video
-          </a>
-
-        </div>
-
-
-        <div class="tags">
-
-          <span>AI Chatbot</span>
-          <span>Conversational AI</span>
-          <span>OpenAI</span>
-          <span>LLM</span>
-          <span>Context</span>
-          <span>AI Assistant</span>
-
-        </div>
-
-      </div>
-
-    </div>
-
   </div>
 
+  <!-- GAME DEVELOPMENT ZONE -->
+  <div id="game-projects" class="project-zone zone-game">
+    <div class="zone-header">
+      <h3><span class="engine-dot unity"></span> Game Development</h3>
+      <p>Building immersive interactive experiences using Unity and Unreal Engine, focusing on gameplay mechanics and optimization.</p>
+    </div>
+
+    <div class="projects-grid">
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Island Environment — Unity Showcase</h3></div>
+        <div class="card-body">
+          <p>Designed and built a complete stylized island environment from the ground up using Unity Terrain. Crafted the landscape through terrain sculpting, texture painting, and lighting.
+          <br><br>Focused on environmental storytelling and performance optimization.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1SLXmVhI3EzUvb8htyW5UwCtbjLVSmM_r/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>Environment Design</span><span>Terrain Sculpting</span><span>Level Design</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Aerial War — Solo Indie Game</h3></div>
+        <div class="card-body">
+          <p>Aerial War is a fast-paced indie aerial combat game featuring intense dogfights. The entire project — from game mechanics to UI/UX design — was crafted by me.
+          <br><br>Integrated AI-generated assets and Figma-designed interfaces.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://play.google.com/store/apps/details?id=com.riftscargames.aerialwar" target="_blank">📱 Play Store</a></div>
+          <div class="tags"><span>Unity</span><span>Aerial Combat</span><span>Indie Game</span><span>Figma UI/UX</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>ATA — ACPlus Therapy App</h3></div>
+        <div class="card-body">
+          <p>ACPlus Respiratory Therapy (ART) uses an FDA-cleared Bluetooth spirometer to convert pulmonary function test data into gamified biofeedback experiences.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://apps.apple.com/us/app/ata/id1666902701" target="_blank">📱 App Store</a></div>
+          <div class="tags"><span>Unity</span><span>HealthTech</span><span>Biofeedback</span><span>Health Focused</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Shooting Game</h3></div>
+        <div class="card-body">
+          <p>Fight for survival in an action-packed shooting game where every bullet counts.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://play.google.com/store/apps/details?id=com.redcubez.commandosurvival" target="_blank">📱 Play Store</a></div>
+          <div class="tags"><span>Unity</span><span>Shooting</span><span>Survival</span><span>Action</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Aerial War UI/UX Design</h3></div>
+        <div class="card-body">
+          <p>Game UI/UX design focused on clear navigation, immersive visuals, and player-centric experience.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1ZYLtjKDJN_igzm5Lqv7xpMIXKsRSb3En/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Game UI/UX Design</span><span>Game Design</span><span>Player Experience</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Bike Racing Game</h3></div>
+        <div class="card-body">
+          <p>Experience high-speed bike racing with thrilling tracks, sharp turns, and intense competition.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://play.google.com/store/apps/details?id=com.redcubez.bikeracinggames" target="_blank">📱 Play Store</a></div>
+          <div class="tags"><span>Unity</span><span>Racing</span><span>Bike</span><span>Arcade</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Car Racing Game</h3></div>
+        <div class="card-body">
+          <p>Race powerful cars, and dominate fast-paced racing tracks.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://play.google.com/store/apps/details?id=com.redcubez.carracinggames" target="_blank">📱 Play Store</a></div>
+          <div class="tags"><span>Unity</span><span>Racing</span><span>Car</span><span>Arcade</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Monopoly Customization</h3></div>
+        <div class="card-body">
+          <p>A client-driven project involving customization of a Monopoly-style game, including new gameplay mechanics and UI updates.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1aRM_oBuYeCpkmF9ZH4ccFFv_0LQtTf34/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>Monopoly</span><span>Customization</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Seamless Firebase Auth</h3></div>
+        <div class="card-body">
+          <p>Signup, Login, Password Reset and Player Data in one system.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1D6Wb3t40P2qsxJ-Yt5nh-yzehhMSgCkU/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>Firebase</span><span>Firestore</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>NPC Interaction Framework</h3></div>
+        <div class="card-body">
+          <p>A Unity project enabling real-time player-to-NPC conversations using OpenAI, with Amazon Polly for text-to-speech.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1c68HI_EOa14Xn1fdeflBCjClyAW39lFx/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>Open AI</span><span>NPC</span><span>Amazon Polly</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>2D Character Rigging</h3></div>
+        <div class="card-body">
+          <p>A project focused on rigging 2D characters and producing high-quality animations.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1_l93Ke59KZA3oZH5TJNqoU8V2_e27K24/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>2D Rigging</span><span>2D Animations</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>Fluid Simulation Shader</h3></div>
+        <div class="card-body">
+          <p>A real-time liquid fluid shader created to simulate flowing, dynamic fluid motion.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1Y8P-ws2wytTeSk9WSKLW8_Bx4Dgb5JST/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>Fluid Simulation</span><span>Shader</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unity"></span><h3>AI Nexus for Unity</h3></div>
+        <div class="card-body">
+          <p>Integrating OpenAI APIs to provide conversational AI, AI-generated images, and real-time translation within Unity.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1lvmTCgLbZh8G5yeR7YalCcJoNGgxBi-S/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unity</span><span>Open AI</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unreal"></span><h3>FPS Survival Shooter</h3></div>
+        <div class="card-body">
+          <p>Advanced FPS simulation focusing on core mechanics and enemy intelligence. Features advanced weapon systems and reactive AI behavior.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1hjiZmqOP1dfu5xT_XvzA8r5GFUkCONNY/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unreal</span><span>FPS Systems</span><span>Enemy AI</span><span>Combat</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unreal"></span><h3>Level Transition System</h3></div>
+        <div class="card-body">
+          <p>Implemented an interactive level selection system with cinematic transitions and seamless loading events.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1QQVaTg6feZv5WHeI3qreWYohcL35KFrk/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unreal</span><span>UI Interaction</span><span>Level Management</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unreal"></span><h3>Mesh Merging System</h3></div>
+        <div class="card-body">
+          <p>A project focused on merging multiple static meshes in Unreal Engine for optimization.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1EkrTFI3f1fkDaZZ4Rybf3xVdv5JFeIrL/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unreal</span><span>Optimization</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="engine-dot unreal"></span><h3>Grid-Based System</h3></div>
+        <div class="card-body">
+          <p>A customizable grid system layout, allowing real-time editing and interaction for gameplay.</p>
+          <div class="btn-group"><a class="btn-icon" href="https://drive.google.com/file/d/1fovaygiuqaCJMeeZnY8RumT1jTwXUsiT/preview" target="_blank">▶ Video</a></div>
+          <div class="tags"><span>Unreal</span><span>Game Systems</span><span>Grid Mechanics</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
-
-
-<!-- =========================================================
-     CAPABILITIES
-========================================================= -->
-
-<section id="capabilities">
-
-  <div class="section-head">
-
-    <div class="eyebrow">
-      Capabilities
-    </div>
-
-    <h2>
-      What I Build
-    </h2>
-
-  </div>
-
-
-  <div class="capabilities-grid">
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        01 / AGENTS
-      </div>
-
-      <h3>
-        AI Agents
-      </h3>
-
-      <p>
-        AI systems that understand intent, retrieve information, reason through requests, and perform structured actions.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        02 / RAG
-      </div>
-
-      <h3>
-        RAG & Knowledge Systems
-      </h3>
-
-      <p>
-        Retrieval-based AI assistants that connect LLMs with documents, company knowledge, and structured information.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        03 / DATA
-      </div>
-
-      <h3>
-        AI Data Analysts
-      </h3>
-
-      <p>
-        Natural-language interfaces that allow users to ask business questions about structured datasets and receive useful answers.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        04 / AUTOMATION
-      </div>
-
-      <h3>
-        Workflow Automation
-      </h3>
-
-      <p>
-        AI-powered workflows that connect language models with business processes, APIs, data sources, and external tools.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        05 / VOICE
-      </div>
-
-      <h3>
-        Voice AI
-      </h3>
-
-      <p>
-        AI calling and voice systems combining telephony, speech recognition, LLM reasoning, transcription, and text-to-speech.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        06 / DOCUMENTS
-      </div>
-
-      <h3>
-        AI Document Processing
-      </h3>
-
-      <p>
-        AI workflows that extract, summarize, validate, and structure information from PDFs and other unstructured documents.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        07 / BUSINESS
-      </div>
-
-      <h3>
-        AI Business Automation
-      </h3>
-
-      <p>
-        AI systems for HR, customer support, real estate, sales assistance, lead handling, and operational workflows.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        08 / REAL WORLD
-      </div>
-
-      <h3>
-        AI + Real-World Tools
-      </h3>
-
-      <p>
-        AI agents connected to browsers, APIs, live data, external services, and scheduled processes to perform useful tasks.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        09 / CONTENT
-      </div>
-
-      <h3>
-        AI Content Systems
-      </h3>
-
-      <p>
-        Automated workflows for SEO content, YouTube production, story generation, scene planning, prompts, and voice scripts.
-      </p>
-
-    </div>
-
-
-    <div class="capability">
-
-      <div class="capability-number">
-        10 / INTEGRATION
-      </div>
-
-      <h3>
-        AI API Integration
-      </h3>
-
-      <p>
-        Connecting AI models with APIs, backend services, databases, external platforms, and custom application interfaces.
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================================================
-     CONTACT
-========================================================= -->
 
 <section id="contact">
-
   <div class="section-head">
-
-    <div class="eyebrow">
-      Build Settings
-    </div>
-
-    <h2>
-      Let's Build Something Intelligent
-    </h2>
-
-    <p>
-
-      If you need an AI agent, RAG system, automation workflow, AI assistant, data analyst, or custom LLM-powered application, reach out below.
-
-    </p>
-
+    <div class="eyebrow">Build Settings</div>
+    <h2>Contact</h2>
+    <p>If you'd like to collaborate or hire me for your next game, reach out below.</p>
   </div>
-
 
   <div class="cards">
-
-
     <div class="contact-card">
-
-      <h3>
-        📧 EMAIL
-      </h3>
-
-      <p>
-
-        <a
-          id="emailLink"
-          href="mailto:faizanahmed21@hotmail.com"
-        >
-          faizanahmed21@hotmail.com
-        </a>
-
-      </p>
-
-      <button onclick="copyEmail()">
-        Copy Email
-      </button>
-
+      <h3>📧 EMAIL</h3>
+      <p><a id="emailLink" href="mailto:faizanahmed21@hotmail.com">faizanahmed21@hotmail.com</a></p>
+      <button onclick="copyEmail()">Copy Email</button>
     </div>
-
-
     <div class="contact-card">
-
-      <h3>
-        📋 RESUME
-      </h3>
-
-      <p>
-
-        <a>
-          Download my latest resume
-        </a>
-
-      </p>
-
-      <button
-        onclick="window.location.href='https://drive.google.com/file/d/14GO1jk2TkBsJquOiF4jnZzeit-zA0n2b/view?usp=sharing';"
-      >
-        Download
-      </button>
-
+      <h3>📋 RESUME</h3>
+      <p>Download my latest resume</p>
+      <button onclick="window.location.href='https://drive.google.com/file/d/1GRcweib3rVIAmWYKP8qsIBtPtY50TFiW/view?usp=drive_link';">Download</button>
     </div>
-
-
   </div>
-
 </section>
 
-
-
-<footer>
-
-  © 2026 Faizan Ahmed — AI Engineer
-
-</footer>
-
-
+<footer>© 2026 Faizan Ahmed — Senior Software Engineer | Unity & Unreal | AI Solutions Architect</footer>
 
 <script>
-
-  function copyEmail(){
-
-    const email =
-      "faizanahmed21@hotmail.com";
-
-    navigator.clipboard
-      .writeText(email)
-      .then(() => {
-
-        alert(
-          "Email copied: " + email
-        );
-
-      });
-
+  function copyEmail() {
+    const email = "faizanahmed21@hotmail.com";
+    navigator.clipboard.writeText(email).then(() => {
+      alert("Email copied: " + email);
+    });
   }
-
 </script>
-
 
 </body>
 </html>
